@@ -18,7 +18,7 @@ public class GameState extends State {
 		super(game);
 		world = new World(game, "res/wrl/world1.wld");
 		uiManager = new UIManager();
-		uiManager.addObject(new UIInputField(game, game.getKeyManager().cmdBuilder.toString(), new Color(154, 57, 0), Color.WHITE, 480, 320, 200, 100));
+		uiManager.addObject(new UIInputField(game, game.getKeyManager().cmdBuilder.toString(), new Color(154, 57, 0), Color.WHITE, 480, 370, 200, 50));
 	}
 	
 	@Override

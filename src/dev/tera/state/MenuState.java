@@ -7,7 +7,6 @@ import dev.tera.Game;
 import dev.tera.gfx.Assets;
 import dev.tera.input.ClickListener;
 import dev.tera.ui.UIManager;
-import dev.tera.ui.button.UIButton;
 import dev.tera.ui.button.UITexturedButton;
 
 public class MenuState extends State {
@@ -18,22 +17,10 @@ public class MenuState extends State {
 		super(game);
 		uiManager = new UIManager();
 		game.getMouseManager().setUIManager(uiManager);
-		uiManager.addObject(new UIButton(100.0f, 100.0f, 100, 50, "Play", new ClickListener() {
+		uiManager.addObject(new UITexturedButton(100.0f, 200.0f, 128, 64, new ClickListener() {
 			@Override
 			public void onClick() {
-				Game.currentState = new GameState(game);
-			}
-		}, Color.WHITE, Color.BLACK, Assets.mainFont, Color.BLACK));
-		uiManager.addObject(new UIButton(400.0f, 100.0f, 100, 50, "Quit", new ClickListener() {
-			@Override
-			public void onClick() {
-				System.exit(0);
-			}
-		}, Color.WHITE, Color.BLACK, Assets.mainFont, Color.BLACK));
-		uiManager.addObject(new UITexturedButton(100.0f, 250.0f, 128, 64, new ClickListener() {
-			@Override
-			public void onClick() {
-				System.out.println("Clicked textured button.\n");
+				game.currentState = new GameState(game);
 			}
 		}, Assets.uiPlayButton));
 	}

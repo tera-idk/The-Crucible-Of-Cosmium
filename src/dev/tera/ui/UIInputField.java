@@ -13,11 +13,12 @@ public class UIInputField extends UIObject {
 	private float inputX, inputY;
 	
 	private Color bgCol, textCol;
+	private int blinkInterval = 0;
 	
 	public UIInputField(Game game, String inputString, Color bgCol, Color textCol, float x, float y, int width, int height) {
 		super(x, y, width, height);
-		inputX = x + 5;
-		inputY = y + 60;
+		inputX = x + 20;
+		inputY = y + 35;
 		this.inputString = inputString;
 		this.bgCol = bgCol;
 		this.textCol = textCol;
@@ -25,6 +26,7 @@ public class UIInputField extends UIObject {
 
 	@Override
 	public void tick() {
+		blinkInterval += 5;
 	}
 
 	@Override
@@ -34,6 +36,13 @@ public class UIInputField extends UIObject {
 		g.setFont(Assets.inputFont);
 		g.setColor(textCol);
 		g.drawString(inputString, (int) inputX, (int) inputY);
+		g.setColor(bgCol.darker());
+		g.fillRect((int) x, (int) y, 10, height);
+		g.setColor(textCol);
+		if (blinkInterval >= 120) {
+			g.fillRect((int) ((inputX + (inputString.length() * 2.3) * 5.1)), (int) y + 10, 3, height - 20);
+			blinkInterval = -5;
+		}
 	}
 
 	@Override
@@ -44,6 +53,11 @@ public class UIInputField extends UIObject {
 		inputString = keyboard.cmdBuilder.toString();
 		if (keyboard.backspace && inputString.length() != 0) {
 			keyboard.cmdBuilder.deleteCharAt(inputString.length() - 1);
+			try {
+				Thread.sleep(30);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
