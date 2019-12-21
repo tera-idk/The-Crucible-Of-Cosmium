@@ -34,9 +34,11 @@ public class Display {
 		canvas.setPreferredSize(size);
 		canvas.setMaximumSize(size);
 		canvas.setMinimumSize(size);
+		canvas.setFocusable(false);
 		
 		frame.add(canvas);
 		frame.setVisible(true);
+		frame.setFocusable(true);
 		frame.pack();
 	}
 	

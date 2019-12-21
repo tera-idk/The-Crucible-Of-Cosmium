@@ -4,12 +4,14 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class Keyboard implements KeyListener {
-	
-	private boolean[] keys;
-	public boolean up, down, left, right;
+
+	public StringBuilder cmdBuilder;
+	public boolean[] keys;
+	public boolean up, down, left, right, enter, backspace;
 	
 	public Keyboard() {
 		keys = new boolean[256];
+		cmdBuilder = new StringBuilder();
 	}
 
 	public void tick() {
@@ -17,6 +19,8 @@ public class Keyboard implements KeyListener {
 		down = keys[KeyEvent.VK_S] || keys[KeyEvent.VK_DOWN];
 		left = keys[KeyEvent.VK_A] || keys[KeyEvent.VK_LEFT];
 		right = keys[KeyEvent.VK_D] || keys[KeyEvent.VK_RIGHT];
+		enter = keys[KeyEvent.VK_ENTER];
+		backspace = keys[KeyEvent.VK_BACK_SPACE];
 	}
 	
 	@Override
@@ -31,6 +35,7 @@ public class Keyboard implements KeyListener {
 
 	@Override
 	public void keyTyped(KeyEvent ke) {
+		cmdBuilder.append(ke.getKeyChar());
 	}
 
 }

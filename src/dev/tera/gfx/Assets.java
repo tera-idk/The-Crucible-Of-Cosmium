@@ -10,7 +10,7 @@ public class Assets {
 	
 	private static final int SPRITE_WIDTH = 32, SPRITE_HEIGHT = 32;
 
-	public static Font mainFont;
+	public static Font mainFont, inputFont;
 	
 	public static BufferedImage grassTile, dirtTile, stoneTile;
 	public static BufferedImage uiPlayButton;
@@ -18,6 +18,7 @@ public class Assets {
 	public static void init() {
 		// Font
 		mainFont = FontLoader.loadFont("res/fnt/m3x6.ttf", 63);
+		inputFont = FontLoader.loadFont("res/fnt/m3x6.ttf", 53);
 		
 		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("./res/img/sheet.png"));
 		SpriteSheet uiSheet = new SpriteSheet(ImageLoader.loadImage("./res/img/ui.png"));

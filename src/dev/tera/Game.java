@@ -107,6 +107,10 @@ public class Game implements Runnable {
 		return mouseManager;
 	}
 	
+	public Display getDisplay() {
+		return display;
+	}
+	
 	public synchronized void start() {
 		if (running) return;
 		running = true;
