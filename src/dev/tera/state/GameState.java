@@ -40,6 +40,7 @@ public class GameState extends State {
 			inputField.detectInputChanges(keyboard);
 		else
 			System.out.println("Input field is null.\n");
+		if (keyboard.escape) Game.currentState = new MenuState(game);
 	}
 
 }

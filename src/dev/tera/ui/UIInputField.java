@@ -40,7 +40,7 @@ public class UIInputField extends UIObject {
 		g.fillRect((int) x, (int) y, 10, height);
 		g.setColor(textCol);
 		if (blinkInterval >= 120) {
-			g.fillRect((int) ((inputX + (inputString.length() * 2.3) * 5.1)), (int) y + 10, 3, height - 20);
+			g.fillRect((int) ((inputX + (inputString.length() * 2.6) * 5.1)), (int) y + 10, 3, height - 20);
 			blinkInterval = -5;
 		}
 	}
@@ -51,14 +51,15 @@ public class UIInputField extends UIObject {
 	
 	public void detectInputChanges(Keyboard keyboard) {
 		inputString = keyboard.cmdBuilder.toString();
-		if (keyboard.backspace && inputString.length() != 0) {
-			keyboard.cmdBuilder.deleteCharAt(inputString.length() - 1);
-			try {
-				Thread.sleep(30);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
+		if (keyboard.clear) keyboard.cmdBuilder.delete(0, inputString.length());
+//		if (keyboard.backspace && inputString.length() != 0) {
+//			keyboard.cmdBuilder.deleteCharAt(inputString.length() - 1);
+//			try {
+//				Thread.sleep(30);
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
+//		}
 	}
 	
 }

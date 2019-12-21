@@ -43,6 +43,7 @@ public class MenuState extends State {
 		g.fillRect(0, 0, Game.WIDTH, Game.HEIGHT);
 		g.setColor(new Color(159, 99, 39).darker());
 		g.fillRect(25, 25, Game.WIDTH - 50, Game.HEIGHT - 50);
+		g.drawImage(Assets.titleCosmium, 300, 75, Assets.SPRITE_WIDTH * 10, Assets.SPRITE_HEIGHT * 10, null);
 		Util.drawString(g, "Crucible of Cosmium", 45, 100, false, Color.WHITE, Assets.titleFont);
 		uiManager.render(g);
 	}

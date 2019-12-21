@@ -7,7 +7,7 @@ public class Keyboard implements KeyListener {
 
 	public StringBuilder cmdBuilder;
 	public boolean[] keys;
-	public boolean up, down, left, right, enter, backspace;
+	public boolean up, down, left, right, enter, backspace, clear, escape;
 	
 	public Keyboard() {
 		keys = new boolean[256];
@@ -21,6 +21,8 @@ public class Keyboard implements KeyListener {
 		right = keys[KeyEvent.VK_D] || keys[KeyEvent.VK_RIGHT];
 		enter = keys[KeyEvent.VK_ENTER];
 		backspace = keys[KeyEvent.VK_BACK_SPACE];
+		clear = keys[KeyEvent.VK_CONTROL];
+		escape = keys[KeyEvent.VK_ESCAPE];
 	}
 	
 	@Override
@@ -35,7 +37,9 @@ public class Keyboard implements KeyListener {
 
 	@Override
 	public void keyTyped(KeyEvent ke) {
-		cmdBuilder.append(ke.getKeyChar());
+		if (Character.isAlphabetic(ke.getKeyChar()) || Character.isSpaceChar(ke.getKeyChar()) || Character.isDigit(ke.getKeyChar()) || ke.getKeyChar() == ',') {
+			cmdBuilder.append(ke.getKeyChar());
+		}
 	}
 
 }
