@@ -8,6 +8,7 @@ import dev.tera.gfx.Assets;
 import dev.tera.input.ClickListener;
 import dev.tera.ui.UIManager;
 import dev.tera.ui.button.UITexturedButton;
+import dev.tera.util.Util;
 
 public class MenuState extends State {
 
@@ -23,6 +24,12 @@ public class MenuState extends State {
 				game.currentState = new GameState(game);
 			}
 		}, Assets.uiPlayButton));
+		uiManager.addObject(new UITexturedButton(100.0f, 300.0f, 128, 64, new ClickListener() {
+			@Override
+			public void onClick() {
+				System.exit(1);
+			}
+		}, Assets.uiQuitButton));
 	}
 	
 	@Override
@@ -34,6 +41,9 @@ public class MenuState extends State {
 	public void render(Graphics g) {
 		g.setColor(new Color(159, 99, 39));
 		g.fillRect(0, 0, Game.WIDTH, Game.HEIGHT);
+		g.setColor(new Color(159, 99, 39).darker());
+		g.fillRect(25, 25, Game.WIDTH - 50, Game.HEIGHT - 50);
+		Util.drawString(g, "Crucible of Cosmium", 45, 100, false, Color.WHITE, Assets.titleFont);
 		uiManager.render(g);
 	}
 

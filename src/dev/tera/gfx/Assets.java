@@ -10,13 +10,14 @@ public class Assets {
 	
 	private static final int SPRITE_WIDTH = 32, SPRITE_HEIGHT = 32;
 
-	public static Font mainFont, inputFont;
+	public static Font titleFont, mainFont, inputFont;
 	
 	public static BufferedImage grassTile, dirtTile, stoneTile;
-	public static BufferedImage uiPlayButton;
+	public static BufferedImage uiPlayButton, uiQuitButton;
 	
 	public static void init() {
 		// Font
+		titleFont = FontLoader.loadFont("res/fnt/m3x6.ttf", 123);
 		mainFont = FontLoader.loadFont("res/fnt/m3x6.ttf", 63);
 		inputFont = FontLoader.loadFont("res/fnt/m3x6.ttf", 53);
 		
@@ -30,6 +31,7 @@ public class Assets {
 		
 		// UI
 		uiPlayButton = uiSheet.crop(0, 0, SPRITE_WIDTH * 2, SPRITE_HEIGHT);
+		uiQuitButton = uiSheet.crop(SPRITE_WIDTH * 2, 0, SPRITE_WIDTH * 2, SPRITE_HEIGHT);
 	}
 
 }

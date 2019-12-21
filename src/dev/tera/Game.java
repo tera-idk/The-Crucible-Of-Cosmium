@@ -14,7 +14,7 @@ public class Game implements Runnable {
 	
 	public static final int WIDTH = 680;
 	public static final int HEIGHT = 420;
-	private static final String TITLE = "RPG Text Adventure";
+	private static final String TITLE = "Crucible of Cosmium - V0.1";
 	
 	private Display display;
 	private Keyboard keyManager;
